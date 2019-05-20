@@ -1,5 +1,6 @@
-from flask import Flask, render_template, g
 import sqlite3
+from flask import Flask, render_template, g
+
 
 PATH = 'db/jobs.sqlite'
 
@@ -18,7 +19,7 @@ def execute_sql(sql, values=(), commit=False, single=False):
     connection = open_connection()
     cursor = connection.execute(sql, values)
 
-    if commit == True:
+    if commit is True:
         results = connection.commit()
     else:
         results = cursor.fetchone() if single else cursor.fetchall()
